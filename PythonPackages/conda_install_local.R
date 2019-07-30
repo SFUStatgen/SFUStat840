@@ -7,7 +7,7 @@ conda_install_local <- function(env,pkg,dir) {
   python <- conda_python(envname=env)
   args <- reticulate:::conda_args("install",env)
   args <- c(args,"-c",paste0("file:/",dir),pkg)
-  result <- system2(conda,shQuote(args)
+  result <- system2(conda,shQuote(args))
   if (result != 0L) {
     stop("Error ", result, " occurred installing ",pkg," into conda environment ", 
          env, call. = FALSE)
