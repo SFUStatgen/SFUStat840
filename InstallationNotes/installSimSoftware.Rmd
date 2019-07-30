@@ -1,0 +1,236 @@
+---
+title: "Installing Simulation Software"
+author: "Jinko Graham"
+date: "26/07/2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+```
+
+**NOTE 1** This document installs software. It is not meant to be "knitted",
+but rather run line-by-line to install software on your computer.
+
+**NOTE 2** Before working through this installation document, you 
+must copy, or "clone" the class GitHub repository to your computer.
+The simplest way to do this is to create an RStudio project linked to the git
+repository https://github.com/SFUStatgen/SFUStat840. See the instructions
+at https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN for getting started with git and version control in RStudio. Pay particular attention to the section "Creating a new project based on a remote Git or Subversion repository". An alternative method for cloning the class repository
+that works on Mac and Linux is to use the command-line version of git, 
+by typing `git clone https://github.com/SFUStatgen/SFUStat840` into a terminal.
+
+
+
+## Overview
+
+We will work with simulation software called `msprime` 
+and `SLiM`. `msprime` simulates ancestries of chromosomes
+according to a backward-in-time model called the coalescent 
+that we will study in class. `SLiM` simulates genomic data
+forwards-in-time using a model called the Wright-Fisher that 
+we will also study in class. Both programs return a data structure
+called a succinct tree sequence (STS)
+that represent ancestral relationships between chromosomes.
+`msprime` is a Python package (a.k.a. "module") and `SLiM` is a C program.
+Installation of `msprime` also installs a toolkit called `tskit`
+that is useful manipulation of STSs in Python.
+A Python package called `pyslim` allows us to read STSs
+output by `SLiM` into Python so that we can manipulation them
+with the tools in `tskit`.
+The majority of this document is comprised of instructions
+for installing Python and the necessary package. At the
+end is a short section describing installation of `SLiM`.
+
+## Python and Python packages
+
+I will be using an R package called **reticulate**
+to interface with Python and the Python packages. 
+The following instructions will lead you through
+the installation of Python, reticulate `msprime`, `tskit` and `pyslim`.
+We will also install a package called `tsinfer` that infers STSs from
+genetic sequence data. 
+
+### Install Python and conda
+
+Conda is a 
+package management system used by the Python community. Python and conda 
+are installed simultaneously by a program called miniconda, which you can find at
+  https://docs.conda.io/en/latest/miniconda.html
+  
+Choose the installer for Python version 3.7 that is 
+appropriate for your operating system and follow the instructions 
+to install.
+Note for Mac users: You can choose either 
+a "bash installer" or a ".pkg installer". I think the .pkg installer
+will be more familiar to most users. Download the .pkg file to 
+your computer,
+double-click to start the installer and 
+you will be guided through the installation.
+    * NB: The installation of conda changes the configuration of the shell 
+    used in your terminal windows. You need to open a *new* terminal
+    after the installation to be able to use conda. From a new terminal,
+    type `which python` and record the path to the python executable 
+    that was installed by miniconda (you will need it in the next step). 
+    On my Mac the path is
+    `/Users/jgraham/miniconda3/bin/python`.
+
+
+### Install reticulate
+
+This is an R package and can be installed from CRAN in the usual way.
+After installing, use `library()` to load the package and the function
+`use_python()` to set the path to your Python executable:
+
+
+```{r}
+library(reticulate)
+use_python("~/miniconda3/bin/python")
+```
+
+### Installing `msprime` and `tskit` into a Python "environment".
+
+Python environments are like RStudio projects in that they are meant to
+encapsulte all code and data for a specific project. However, they take
+this encapsulation idea a
+step further and also include any Python package
+that you need for the project. In the following I create an environment called
+`Stat840` with the `conda_create()` function
+and install `msprime` and `tskit` into it with `conda_install()`.
+Since `msprime` depends on `tskit` (in much the same way as 
+R packages can depend on each other), `tskit` will be automatically
+installed when we install `msprime`.
+
+```{r}
+envname <- "Stat840"
+conda_create(envname)
+conda_install(envname,"msprime")
+```
+
+Now try executing the following Python code chunk to test your installation
+of `msprime`. (We'll learn more about the simulation parameters and
+what the output means in class.)
+
+```{python}
+import msprime
+ts = msprime.simulate(sample_size=4, recombination_rate=1e-8, Ne=1000)
+tree = ts.first()
+print(tree.total_branch_length)
+```
+
+### Installing `pyslim`
+
+Unfortunately `pyslim` has not yet been made available on the
+`conda-forge` website that hosts conda-installable packages. I
+built a conda-installable version of `pyslim` myself and uploaded
+it to the class GitHub site. I've also written an function 
+`conda_install_local()` to simplify the installation of pyslim
+from within R. Both the package and R function are in the 
+class GitHub repository (https://github.com/SFUStatgen/SFUStat840). 
+Before proceeding, you **must**
+have a copy of the repository on your computer. 
+In what follows, replace `/path/to/SFUStat840` with the path to 
+the copy of the class repository on your computer.
+
+```{r}
+pkgname <- "pyslim"
+dir <- "/path/to/SFUStat840/PythonPackages/" 
+# NOTE to JG: the following points to a temporary location for the class 
+# repository. Change when you decide where to put the class repository.
+dir <- "/Users/jgraham/Dropbox/StatgenAdmin/Scratch840/SFUStat840/PythonPackages/"
+source(paste0(dir,"conda_install_local.R"))
+conda_install_local(envname,pkgname,dir)
+```
+
+Testing of `pyslim` is deferred until we've installed SLiM (see below).
+
+### Installing `tsinfer`
+
+`tsinfer` is also not available on conda-forge. I was not able to build
+a conda-installable version of this package, so we must use
+the Python package manager called `pip` that installs packages
+from a repository called PyPI. The `conda_install()` function
+can install packages *via* pip with the `pip=TRUE` argument. 
+This also installs all of the package dependencies of `tsinfer`.
+One of these dependencies is
+called `numcodecs`, and the pip-installed version of `numcodecs` is
+broken. The work-around is to re-install `numcodecs` with conda,
+after installing `tsinfer`.
+
+```{r}
+conda_install("Stat840","tsinfer",pip=TRUE)
+conda_install("Stat840","numcodecs")
+```
+
+You can test `tsinfer` with the following Python code chunk:
+
+```{python}
+import tsinfer
+with tsinfer.SampleData(sequence_length=4) as sample_data:
+    sample_data.add_site(0, [0, 1, 0, 0, 0], ["A", "T"])
+    sample_data.add_site(1, [0, 0, 0, 1, 1], ["G", "C"])
+    sample_data.add_site(2, [0, 1, 1, 0, 0], ["C", "A"])
+    sample_data.add_site(3, [0, 1, 1, 0, 0], ["G", "C"])
+inferred_ts = tsinfer.infer(sample_data)
+tree = inferred_ts.first()
+print(tree.total_branch_length)
+```
+
+### Using the Stat840 Python environment in future R sessions
+
+To use the `Stat840` Python environment and all the package
+you have installed into it, include the following code 
+chunk at the top of your RMarkdown documents.
+
+```{r}
+library(reticulate)
+use_condaenv("Stat840")
+```
+
+
+## Installing `SLiM`
+
+`SLiM` is a C program available from 
+  https://messerlab.org/slim/
+  
+Unfortunately the program is only available for Mac OS X and Linux users.
+In fact, our group has only been successful installing SLiM on Mac OS X.
+If you are a Mac user, download and run the OS X installer from the 
+above website. 
+
+If you do not have access to a Mac, you can get an 
+account on a Mac Pro used by the Graham and McNeney labs. The computer
+is housed in Brad McNeney's office, and you will have to make an 
+appointment with Brad to log in from the console the first time you
+use it. After the initial login, you can log in remotely. You will
+not be able to use the SLiM GUI, or any other GUI, when you log in remotely.
+Also, without GUI access you can't use RStudio, so 
+you will need to use `git` from the 
+command line to clone the repository to your account on this Mac;
+i.e., run `git clone https://github.com/SFUStatgen/SFUStat840` .
+
+After installing SLiM on your computer, or getting access to the G&M Mac, you
+can test it by typing the following into a
+terminal window:
+
+```
+slim /path/to/SFUStat840/SLiM/HallerExample.txt
+```
+
+(This is a modified example from the paper by Haller et al. (2018)  that
+introduces SLiM version 3 and its capability to store simulation results
+as succinct tree sequences.)
+After running SLiM you should find a file called `ex1_TS.trees` in your working directory. A copy of this file is also on the class GitHub repository
+in the SFUStat840/SLiM folder.
+
+Now that you have a file of SLiM output, you can also 
+test your installation of `pyslim`  as follows:
+
+```{python}
+import pyslim
+#ts = pyslim.load("/path/to/SFUStat840/SLiM/ex1_TS.trees")
+ts = pyslim.load("/Users/jgraham/Dropbox/StatgenAdmin/Scratch840/SFUStat840/SLiM/ex1_TS.trees")
+tree = ts.first()
+print(tree.total_branch_length)
+```
+
