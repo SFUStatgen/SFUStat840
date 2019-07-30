@@ -16,9 +16,10 @@ but rather run line-by-line to install software on your computer.
 must copy, or "clone" the class GitHub repository to your computer.
 The simplest way to do this is to create an RStudio project linked to the git
 repository https://github.com/SFUStatgen/SFUStat840. See the instructions
-at https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN for getting started with git and version control in RStudio. Pay particular attention to the section "Creating a new project based on a remote Git or Subversion repository". An alternative method for cloning the class repository
-that works on Mac and Linux is to use the command-line version of git, 
-by typing `git clone https://github.com/SFUStatgen/SFUStat840` into a terminal.
+on the class Canvas page on Computing: 
+https://canvas.sfu.ca/courses/47316/pages/computing
+for instructions on 
+getting started with git and version control in RStudio.
 
 
 
