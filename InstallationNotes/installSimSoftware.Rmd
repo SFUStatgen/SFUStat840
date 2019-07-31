@@ -121,7 +121,7 @@ have a copy of the repository on your computer.
 In what follows, replace `/path/to/SFUStat840` with the path to 
 the copy of the class repository on your computer.
 
-```{r}
+```
 pkgname <- "pyslim"
 dir <- "/path/to/SFUStat840/PythonPackages/" 
 # NOTE to JG: the following points to a temporary location for the class 
