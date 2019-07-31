@@ -1,25 +1,21 @@
 ---
 title: "Installing Simulation Software"
 author: "Jinko Graham"
-date: "26/07/2019"
-output: pdf_document
+date: "30/07/2019"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE)
-```
+**NOTE 1** This document installs software. It is not meant
+to be "knitted", but rather run line-by-line to install 
+software on your computer.
 
-**NOTE 1** This document installs software. It is not meant to be "knitted",
-but rather run line-by-line to install software on your computer.
-
-**NOTE 2** Before working through this installation document, you 
-must copy, or "clone" the class GitHub repository to your computer.
-The simplest way to do this is to create an RStudio project linked to the git
-repository https://github.com/SFUStatgen/SFUStat840. See the instructions
-on the class Canvas page on Computing: 
+**NOTE 2** Before working through this installation 
+document, you  must copy, or "clone" the class GitHub 
+repository to your computer. The simplest way to do this is 
+to create an RStudio project linked to the git repository https://github.com/SFUStatgen/SFUStat840. See the 
+instructions on the class Canvas page on Computing: 
 https://canvas.sfu.ca/courses/47316/pages/computing
-for instructions on 
-getting started with git and version control in RStudio.
+for instructions on getting started with git and version 
+control in RStudio.
 
 
 
@@ -29,47 +25,47 @@ We will work with simulation software called `msprime`
 and `SLiM`. `msprime` simulates ancestries of chromosomes
 according to a backward-in-time model called the coalescent 
 that we will study in class. `SLiM` simulates genomic data
-forwards-in-time using a model called the Wright-Fisher that 
-we will also study in class. Both programs return a data structure
-called a succinct tree sequence (STS)
-that represent ancestral relationships between chromosomes.
-`msprime` is a Python package (a.k.a. "module") and `SLiM` is a C program.
-Installation of `msprime` also installs a toolkit called `tskit`
-that is useful manipulation of STSs in Python.
-A Python package called `pyslim` allows us to read STSs
-output by `SLiM` into Python so that we can manipulation them
-with the tools in `tskit`.
-The majority of this document is comprised of instructions
-for installing Python and the necessary package. At the
-end is a short section describing installation of `SLiM`.
+forwards-in-time using a Wright-Fisher reproductive model  
+that we will also study in class. Both programs return a 
+data structure called a succinct tree sequence (STS) that 
+represent ancestral relationships between chromosomes.
+`msprime` is a Python package (a.k.a. "module") and 
+`SLiM` is a C program. Installation of `msprime` also 
+installs a toolkit called `tskit` that is useful 
+manipulation of STSs in Python. A Python package called 
+`pyslim` allows us to read STSs output by `SLiM` into 
+Python so that we can manipulation them with the tools 
+in `tskit`. The majority of this document is comprised 
+of instructions for installing Python and the packages
+`msprime`, `tskit` and `pyslim`. At the end is a short 
+section describing  installation of `SLiM`.
 
 ## Python and Python packages
 
 I will be using an R package called **reticulate**
 to interface with Python and the Python packages. 
 The following instructions will lead you through
-the installation of Python, reticulate `msprime`, `tskit` and `pyslim`.
-We will also install a package called `tsinfer` that infers STSs from
-genetic sequence data. 
+the installation of Python, `reticulate`, `msprime`, 
+`tskit` and `pyslim`. 
 
 ### Install Python and conda
 
-Conda is a 
-package management system used by the Python community. Python and conda 
-are installed simultaneously by a program called miniconda, which you can find at
-  https://docs.conda.io/en/latest/miniconda.html
+Conda is a package management system used by the Python 
+community. Python and conda are installed simultaneously 
+by a program called miniconda, which you can find at
+https://docs.conda.io/en/latest/miniconda.html
   
 Choose the installer for Python version 3.7 that is 
-appropriate for your operating system and follow the instructions 
-to install.
-Note for Mac users: You can choose either 
-a "bash installer" or a ".pkg installer". I think the .pkg installer
-will be more familiar to most users. Download the .pkg file to 
-your computer,
-double-click to start the installer and 
-you will be guided through the installation.
-    * NB: The installation of conda changes the configuration of the shell 
-    used in your terminal windows. You need to open a *new* terminal
+appropriate for your operating system and follow the 
+instructions to install. Note for Mac users: You can 
+choose either  a "bash installer" or a ".pkg installer". 
+I think the .pkg installer will be more familiar to most 
+users. Download the .pkg file to your computer, 
+double-click to start the installer and you will be guided 
+through the installation.
+    * NB: The installation of conda changes the configuration 
+    of the shell used in your terminal windows. You need to 
+    open a *new* terminal
     after the installation to be able to use conda. From a new terminal,
     type `which python` and record the path to the python executable 
     that was installed by miniconda (you will need it in the next step). 
