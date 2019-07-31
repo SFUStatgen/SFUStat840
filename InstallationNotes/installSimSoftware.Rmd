@@ -64,14 +64,13 @@ I think the .pkg installer will be more familiar to most
 users. Download the .pkg file to your computer, 
 double-click to start the installer and you will be guided 
 through the installation.
-    * NB: The installation of conda changes the configuration 
-    of the shell used in your terminal windows. You need to 
-    open a *new* terminal
-    after the installation to be able to use conda. From a new terminal,
-    type `which python` and record the path to the python executable 
-    that was installed by miniconda (you will need it in the next step). 
-    On my Mac the path is
-    `/Users/jgraham/miniconda3/bin/python`.
+* NB: The installation of conda changes the configuration 
+of the shell used in your terminal windows. You need to 
+open a *new* terminal
+after the installation to be able to use conda. From a new terminal,
+type `which python` and record the path to the python executable 
+that was installed by miniconda (you will need it in the next step). 
+On my Mac the path is `/Users/jgraham/miniconda3/bin/python`.
 
 
 ### Install reticulate
@@ -124,9 +123,6 @@ the copy of the class repository on your computer.
 ```
 pkgname <- "pyslim"
 dir <- "/path/to/SFUStat840/PythonPackages/" 
-# NOTE to JG: the following points to a temporary location for the class 
-# repository. Change when you decide where to put the class repository.
-dir <- "/Users/jgraham/Dropbox/StatgenAdmin/Scratch840/SFUStat840/PythonPackages/"
 source(paste0(dir,"conda_install_local.R"))
 conda_install_local(envname,pkgname,dir)
 ```
