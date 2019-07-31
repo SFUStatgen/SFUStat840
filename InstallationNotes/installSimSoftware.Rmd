@@ -64,6 +64,7 @@ I think the .pkg installer will be more familiar to most
 users. Download the .pkg file to your computer, 
 double-click to start the installer and you will be guided 
 through the installation.
+
 * NB: The installation of conda changes the configuration 
 of the shell used in your terminal windows. You need to 
 open a *new* terminal
