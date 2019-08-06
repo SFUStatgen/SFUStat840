@@ -1,0 +1,99 @@
+---
+title: "Test your Installed Software"
+author: "Jinko Graham"
+date: "08/07/2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+If you successfully installed all the software 
+in the `installSimSoftware.Rmd` document, you 
+should be able to knit this document without 
+errors. 
+* Note 1: Before you knit, change the `envname`
+variable in the following code chunk to the 
+name of your Stat 840 conda environment, 
+if different from "Stat840" and change
+the character string `pathToSFUStat840`
+to the location of the SFUStat840 repository on 
+your computer.
+* Note 2: The "test" of SLiM is not executed
+in this document. Instead, you are given 
+a command that you can type into a Mac
+terminal to test that SLiM is 
+installed properly.
+* Note 3: The tests in this document use files from the class GitHub
+repository. You should already have a copy of this repository
+on your computer from the software installation. 
+**Students without a Mac** who are
+using the Graham & McNeney lab Mac to run SLiM will need a
+copy of the repository on their user account on the Graham & McNeney 
+lab Mac as well.
+To get a copy on the Graham & McNeney lab Mac, log in
+remotely, navigate to the folder for your Stat 840 work,
+and type the following from the command line:
+
+```
+git clone https://github.com/SFUStatgen/SFUStat840
+```
+
+
+```{r}
+envname <- "Stat840"
+pathToSFUStat840 <- "/Users/jgraham/Desktop/Drawer/TeachSemAdmin/Stat890_19/SFUStat840"
+pathToSFUStat840 <- "/Users/mcneney/Dropbox/StatgenAdmin/Scratch840/SFUStat840"
+```
+
+
+## Test reticulate
+
+```{r}
+library(reticulate)
+use_python("~/miniconda3/bin/python")
+use_condaenv(envname)
+```
+
+## Test `msprime` and `tskit`
+
+```{python}
+import msprime
+ts = msprime.simulate(sample_size=4, recombination_rate=1e-8, Ne=1000)
+tree = ts.first()
+print(tree.total_branch_length)
+```
+
+
+## Test `pyslim`
+
+In the following Python code chunk, replace the path to the 
+class repository on my computer (/Users/jgraham/ ... /SFUStat840) 
+with the path on your computer.
+
+```{python}
+import pyslim
+ts = pyslim.load("/Users/jgraham/Desktop/Drawer/TeachSemAdmin/Stat890_19/SFUStat840/SLiM/ex1_TS.trees")
+tree = ts.first()
+print(tree.total_branch_length)
+```
+
+
+## Test `SLiM`
+
+After installing SLiM on your Mac, or getting access to the Graham and 
+McNeney lab Mac, you
+can test it by typing the following into a
+terminal window.
+Replace the path to the 
+class repository on my computer (/Users/jgraham/ ... /SFUStat840) 
+with the path on your computer.
+
+```
+slim /Users/jgraham/Desktop/Drawer/TeachSemAdmin/Stat890_19/SFUStat840/SLiM/HallerExample.txt
+```
+
+After running SLiM you should find a file called `ex1_TS.trees` in your working directory. A copy of this file is also on the class GitHub repository
+in the SFUStat840/SLiM folder.
