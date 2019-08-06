@@ -21,7 +21,7 @@ control in RStudio.
 
 
 
-## Overview
+## 1. Overview
 
 We will work with simulation software called `msprime` 
 and `SLiM`. `msprime` simulates ancestries of chromosomes
@@ -45,7 +45,7 @@ from the Python packages,
 with an installer program that is downloaded from
 the developer's website.
 
-## Python and Python packages
+## 2. Python and Python packages
 
 We will be using the R package **reticulate**
 to interface between R and Python. Specifically,
@@ -55,9 +55,9 @@ The instructions in this section will lead you through
 the installation of Python, `reticulate`, `msprime`, 
 `tskit` and `pyslim`. 
 
-### Install Python and conda
+### 2.1. Installing Python and conda
 
-Conda is a package management system used by the Python 
+Conda is a package-management system used by the Python 
 community. Python and conda are installed simultaneously 
 by a program called miniconda, which you can find at
 https://docs.conda.io/en/latest/miniconda.html
@@ -80,7 +80,7 @@ that was installed by miniconda (you will need it in the next step).
 On my Mac the path is `/Users/jgraham/miniconda3/bin/python`.
 
 
-### Install reticulate
+### 2.2. Installing reticulate
 
 This is an R package and can be installed from CRAN in the usual way.
 After installing, use `library()` to load the package and the function
@@ -93,7 +93,7 @@ library(reticulate)
 use_python("~/miniconda3/bin/python")
 ```
 
-### Installing `msprime` and `tskit` into a Python "environment".
+### 2.3. Installing `msprime` and `tskit` into a Python "environment".
 
 Python environments are like RStudio projects in that they are meant to
 encapsulate all code and data for a specific project. However, they take
@@ -113,14 +113,14 @@ conda_install(envname,"msprime")
 ```
 
 
-### Installing `pyslim`
+### 2.4. Installing `pyslim`
 
 Unfortunately `pyslim` is not available on the
-`conda-forge` website that hosts conda-installable packages. To get around this, I have built and 
+`conda-forge` website that hosts conda-installable packages. However, I have built and 
 uploaded our own conda-installable version of `pyslim`
-to the class GitHub site. To simplify the installation 
-of pyslim from with R, I've also written a function 
-`conda_install_local()`. Both the package and R 
+to the class GitHub site and written a function 
+`conda_install_local()` to simplify its installation 
+from within R. Both the package and R 
 function are in the class GitHub repository (https://github.com/SFUStatgen/SFUStat840). 
 Before proceeding, you **must**
 have a copy of the repository on your computer. 
@@ -135,10 +135,10 @@ conda_install_local(envname,pkgname,dir)
 ```
 
 
-### Using the Stat840 Python environment in future R sessions
+### 2.5. Using the Stat840 Python environment in future R sessions
 
-To use the `Stat840` Python environment and all the package
-you have installed into it, include the following code 
+To use the `Stat840` Python environment and all the packages
+that you've installed into it, include the following code 
 chunk at the top of your RMarkdown documents.
 
 ```
@@ -147,7 +147,7 @@ use_condaenv("Stat840")
 ```
 
 
-## Installing `SLiM`
+## 3. Installing `SLiM`
 
 `SLiM` is a C program available from 
   https://messerlab.org/slim/
