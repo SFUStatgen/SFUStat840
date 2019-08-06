@@ -17,13 +17,9 @@ errors.
 * Note 1: Before you knit, change the `envname`
 variable in the following code chunk to the 
 name of your Stat 840 conda environment, 
-if different from "Stat840" and change
-the character string `pathToSFUStat840`
-to the location of the SFUStat840 repository on 
-your computer.
+if different from "Stat840".
 ```{r}
 envname <- "Stat840"
-pathToSFUStat840 <- "/Users/jgraham/Desktop/Drawer/TeachSemAdmin/Stat890_19/SFUStat840"
 ```
 * Note 2: The "test" of SLiM is not executed
 in this document. Instead, you are given 
