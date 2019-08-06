@@ -80,9 +80,9 @@ that was installed by miniconda (you will need it in the next step).
 On my Mac the path is `/Users/jgraham/miniconda3/bin/python`.
 
 
-### 2.2. Installing reticulate
+### 2.2. Installing the R package `reticulate`
 
-This is an R package and can be installed from CRAN in the usual way.
+AS an R package, `reticulate` and can be installed from CRAN in the usual way.
 After installing, use `library()` to load the package and the function
 `use_python()` to set the path to your Python executable, as
 in the following R code chunk:
@@ -93,7 +93,7 @@ library(reticulate)
 use_python("~/miniconda3/bin/python")
 ```
 
-### 2.3. Installing `msprime` and `tskit` into a Python "environment".
+### 2.3. Installing `msprime` and `tskit` into a Python "environment" from R
 
 Python environments are like RStudio projects in that they are meant to
 encapsulate all code and data for a specific project. However, they take
@@ -113,7 +113,7 @@ conda_install(envname,"msprime")
 ```
 
 
-### 2.4. Installing `pyslim`
+### 2.4. Installing `pyslim` from R
 
 Unfortunately `pyslim` is not available on the
 `conda-forge` website that hosts conda-installable packages. However, I have built and 
