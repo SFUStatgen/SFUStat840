@@ -21,18 +21,32 @@ if different from "Stat840" and change
 the character string `pathToSFUStat840`
 to the location of the SFUStat840 repository on 
 your computer.
+```{r}
+envname <- "Stat840"
+pathToSFUStat840 <- "/Users/jgraham/Desktop/Drawer/TeachSemAdmin/Stat890_19/SFUStat840"
+```
 * Note 2: The "test" of SLiM is not executed
 in this document. Instead, you are given 
 a command that you can type into a Mac
 terminal to test that SLiM is 
 installed properly.
+* Note 3: The tests in this document use files from the class GitHub
+repository. You should already have a copy of this repository
+on your computer from the software installation. 
+**Students without a Mac** who are
+using the Graham & McNeney lab Mac to run SLiM will need a
+copy of the repository on their user account on the Graham & McNeney 
+lab Mac as well.
+To get a copy on the Graham & McNeney lab Mac, log in
+remotely, navigate to the folder for your Stat 840 work,
+and type the following from the command line:
 
-
-```{r}
-envname <- "Stat840"
-pathToSFUStat840 <- "/Users/jgraham/Desktop/Drawer/TeachSemAdmin/Stat890_19/SFUStat840"
-pathToSFUStat840 <- "/Users/mcneney/Dropbox/StatgenAdmin/Scratch840/SFUStat840"
 ```
+git clone https://github.com/SFUStatgen/SFUStat840
+```
+
+
+
 
 
 ## Test reticulate
