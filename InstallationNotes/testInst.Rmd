@@ -70,7 +70,7 @@ with the path on your computer.
 
 ```{python}
 import pyslim
-ts = pyslim.load("/Users/jgraham/Desktop/Drawer/TeachSemAdmin/Stat890_19/SFUStat840/SLiM/ex1_TS.trees")
+ts = pyslim.load("/Users/jgraham/Desktop/Drawer/TeachSemAdmin/Stat840_19/SFUStat840/SLiM/ex1_TS.trees")
 tree = ts.first()
 print(tree.total_branch_length)
 ```
