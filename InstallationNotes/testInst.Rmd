@@ -87,7 +87,7 @@ class repository on my computer (/Users/jgraham/ ... /SFUStat840)
 with the path on your computer.
 
 ```
-slim /Users/jgraham/Desktop/Drawer/TeachSemAdmin/Stat890_19/SFUStat840/SLiM/HallerExample.txt
+slim /Users/jgraham/Desktop/Drawer/TeachSemAdmin/Stat840_19/SFUStat840/SLiM/HallerExample.txt
 ```
 
 After running SLiM you should find a file called `ex1_TS.trees` in your working directory. A copy of this file is also on the class GitHub repository
