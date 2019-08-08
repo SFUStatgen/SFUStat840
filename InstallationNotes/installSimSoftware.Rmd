@@ -116,11 +116,10 @@ conda_install(envname,"msprime")
 ### 2.4. Installing `pyslim` from R
 
 Unfortunately `pyslim` is not available on the
-`conda-forge` website that hosts conda-installable packages. However, I have built and 
-uploaded our own conda-installable version of `pyslim`
-to the class GitHub site and written a function 
-`conda_install_local()` to simplify its installation 
-from within R. Both the package and R 
+`conda-forge` website that hosts conda-installable packages. However, the class has its 
+own conda-installable version of `pyslim` along
+with a bespoke function `conda_install_local()` 
+to simplify its installation from within R. Both the package and R 
 function are in the class GitHub repository (https://github.com/SFUStatgen/SFUStat840). 
 Before proceeding, you **must**
 have a copy of the repository on your computer. 
@@ -161,8 +160,8 @@ version of SLiM (e.g., SLiMgui in your Applications folder).
 
 If you do not have access to a Mac, you can get an 
 account on a Mac Pro housed in Brad McNeney's office.
-You will have to make an appointment with Brad to log in from the console the first time you
-use it. After the initial login from the console in his office, you will be able to log in remotely. You will
+To use it, make an appointment with Brad to log in
+from the console the first time. After this initial login from the console, you will be able to log in remotely. You will
 not be able to use the SLiM GUI when you log in remotely.
 
 
