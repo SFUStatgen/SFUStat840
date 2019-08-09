@@ -1,7 +1,8 @@
 ---
-title: "Test your Installed Software"
+title: "Test Your Installed Software"
 author: "Jinko Graham"
-date: "30/07/2019"
+date: "08/09/2019"
+geometry: margin=1.4cm
 output: pdf_document
 ---
 
@@ -23,26 +24,21 @@ envname <- "Stat840"
 ```
 * Note 2: The "test" of SLiM is not executed
 in this document. Instead, you are given 
-a command that you can type into a Mac
-terminal to test that SLiM is 
-installed properly.
-* Note 3: The tests in this document use files from the class GitHub
-repository. You should already have a copy of this repository
-on your computer from the software installation. 
-**Students without a Mac** who are
-using the Graham & McNeney lab Mac to run SLiM will need a
-copy of the repository on their user account on the Graham & McNeney 
-lab Mac as well.
-To get a copy on the Graham & McNeney lab Mac, log in
+a command to type into a Mac
+terminal to test the SLiM installation.
+* Note 3: The tests in this document use files from the 
+class GitHub repository. You should already have a copy 
+of this repository on your computer from the software installation. 
+**Students
+using the Mac Pro** in Brad's office to run SLiM will also 
+need a copy of the repository on their user account on the Mac Pro.
+To get a copy on the Mac Pro, log in
 remotely, navigate to the folder for your Stat 840 work,
 and type the following from the command line:
 
 ```
 git clone https://github.com/SFUStatgen/SFUStat840
 ```
-
-
-
 
 
 ## Test reticulate
@@ -78,8 +74,8 @@ print(tree.total_branch_length)
 
 ## Test `SLiM`
 
-After installing SLiM on your Mac, or getting access to the Graham and 
-McNeney lab Mac, you
+After installing SLiM on your Mac, or getting access to
+the Mac Pro in Brad's office, you
 can test it by typing the following into a
 terminal window.
 Replace the path to the 
