@@ -123,7 +123,7 @@ use_condaenv("Stat840",required=TRUE,conda=conda)
 
 ### 2.4. Installing `pyslim` from R
 
-**NOTE: THESE INSTRUCTIONS NOT WORKING RIGHT NOW -- PLEASE SKIP TO THE NEXT SECTION**
+**NOTE: THESE INSTRUCTIONS HAVE NOT BEEN TESTED WITH THE MOST RECENT VERSIONS OF THE SOFTWARE. IF YOU CAN'T GET THINGS WORKING, PLEASE SKIP TO THE NEXT SECTION**
 Unfortunately `pyslim` is not available on the
 `conda-forge` website that hosts conda-installable packages. However, the class has its 
 own conda-installable version of `pyslim` along
