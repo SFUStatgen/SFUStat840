@@ -112,7 +112,7 @@ install when we install `msprime`.
 
 ```
 envname <- "Stat840"
-conda <- "~/miniconda3/bin/conda" # chane this if necessary
+conda <- "~/miniconda3/bin/conda" # change this if necessary
 conda_create(envname,conda=conda)
 conda_install(envname,"msprime",conda=conda)
 ```
