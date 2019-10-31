@@ -104,17 +104,20 @@ encapsulate all code and data for a specific project. However, they take
 the encapsulation idea a
 step further than R and also include any Python package
 that you need for the project. In the following, I create an environment called
-`Stat840` with the `conda_create()` function
+`Stat840` 
 and install `msprime` and `tskit` into it with `conda_install()`.
 Since `msprime` depends on `tskit` (in much the same way as 
 R packages can depend on each other), `tskit` will  automatically
 install when we install `msprime`.
+To use the new `Stat840` environment, we call `use_condaenv()`.
+The option `required=TRUE` of `use_condaenv()` ensures that we are using the
+right version of Python.
 
 ```
 envname <- "Stat840"
 conda <- "~/miniconda3/bin/conda" # change this if necessary
-conda_create(envname,conda=conda)
 conda_install(envname,"msprime",conda=conda)
+use_condaenv("Stat840",required=TRUE,conda=conda)
 ```
 
 
@@ -148,7 +151,8 @@ chunk at the top of your RMarkdown documents.
 
 ```
 library(reticulate)
-use_condaenv("Stat840")
+conda <- "~/miniconda3/bin/conda"
+use_condaenv("Stat840",required=TRUE,conda=conda)
 ```
 
 
