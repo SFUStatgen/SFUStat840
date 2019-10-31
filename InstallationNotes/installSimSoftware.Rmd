@@ -94,7 +94,7 @@ in the following R code chunk:
 
 ```
 library(reticulate)
-use_python("~/miniconda3/bin/python")
+use_python("~/miniconda3/bin/python") # change if necessary
 ```
 
 ### 2.3. Installing `msprime` and `tskit` into a Python "environment" from R
@@ -102,7 +102,7 @@ use_python("~/miniconda3/bin/python")
 Python environments are like RStudio projects in that they are meant to
 encapsulate all code and data for a specific project. However, they take
 the encapsulation idea a
-step further than R and also include any Python package
+step further than R and also include any Python packages
 that you need for the project. In the following, I create an environment called
 `Stat840` 
 and install `msprime` and `tskit` into it with `conda_install()`.
@@ -115,7 +115,7 @@ right version of Python.
 
 ```
 envname <- "Stat840"
-conda <- "~/miniconda3/bin/conda" # change this if necessary
+conda <- "~/miniconda3/bin/conda" # change if necessary
 conda_install(envname,"msprime",conda=conda)
 use_condaenv("Stat840",required=TRUE,conda=conda)
 ```
@@ -123,7 +123,6 @@ use_condaenv("Stat840",required=TRUE,conda=conda)
 
 ### 2.4. Installing `pyslim` from R
 
-**NOTE: THESE INSTRUCTIONS HAVE NOT BEEN TESTED WITH THE MOST RECENT VERSIONS OF THE SOFTWARE. IF YOU CAN'T GET THINGS WORKING, PLEASE SKIP TO THE NEXT SECTION**
 Unfortunately `pyslim` is not available on the
 `conda-forge` website that hosts conda-installable packages. However, the class has its 
 own conda-installable version of `pyslim` along
@@ -139,7 +138,7 @@ the copy of the class repository on your computer.
 pkgname <- "pyslim"
 dir <- "/path/to/SFUStat840/PythonPackages/" 
 source(paste0(dir,"conda_install_local.R"))
-conda_install_local(envname,pkgname,dir)
+conda_install_local(envname,pkgname,dir,conda)
 ```
 
 
