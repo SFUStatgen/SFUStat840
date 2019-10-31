@@ -1,8 +1,8 @@
 ---
 title: "Installing Simulation Software"
 author: "Jinko Graham"
-date: "08/07/2019"
-geometry: margin=2.1cm
+date: "10/07/2019"
+geometry: margin=2.0cm
 output: pdf_document
 ---
 
@@ -82,7 +82,7 @@ On my Mac the path is `/Users/jgraham/miniconda3/bin/python`.
 
 ### 2.2. Installing the R package `reticulate`
 
-AS an R package, `reticulate` and can be installed from CRAN in the usual way.
+As an R package, `reticulate` and can be installed from CRAN in the usual way.
 After installing, use `library()` to load the package and the function
 `use_python()` to set the path to your Python executable, as
 in the following R code chunk:
@@ -151,17 +151,17 @@ use_condaenv("Stat840")
 `SLiM` is a C program available from 
   https://messerlab.org/slim/
   
-Unfortunately the program is only available for Mac OS X and Linux users.
-In fact, our group has only been successful installing SLiM on Mac OS X.
+Unfortunately the program is only available for Mac OS X and Linux users. As a Mac user, I haven't installed SLiM on Linux. I know some of
+you are keen to try installing on Linux and so please help eachother out.
 If you are a Mac user, download and run the OS X installer from the 
 above website. This should install both a command-line version of SLiM
 (e.g., in /usr/local/bin/slim) and a graphical-user-interface (GUI)
 version of SLiM (e.g., SLiMgui in your Applications folder).
 
-If you do not have access to a Mac, you can get an 
-account on a Mac Pro housed in Brad McNeney's office.
-To use it, make an appointment with Brad to log in
-from the console the first time. After this initial login from the console, you will be able to log in remotely. You will
+If you do not have access to a Mac and can't get SLiM running on Linux, you are welcome to 
+use the Mac Pro housed in Brad McNeney's office.
+To use this server, all you have to do is log in
+from the console with your SFU ID the first time. This takes 30 seconds, so stop by Brad's office in K10565 immediately after class on Monday or Thursday. After this initial login from the console, you will be able to log in remotely. You will
 not be able to use the SLiM GUI when you log in remotely.
 
 
