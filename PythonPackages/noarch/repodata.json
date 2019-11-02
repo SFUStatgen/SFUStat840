@@ -3,7 +3,7 @@
     "subdir": "noarch"
   },
   "packages": {
-    "pyslim-0.312-pyh39e3cac_0.tar.bz2": {
+    "pyslim-0.314-pyh39e3cac_0.tar.bz2": {
       "build": "pyh39e3cac_0",
       "build_number": 0,
       "depends": [
@@ -16,14 +16,14 @@
       ],
       "license": "MIT",
       "license_family": "MIT",
-      "md5": "285a3abdd8009b6fbf7d1fb7cb99d515",
+      "md5": "c22507fe35020954f1e9b3b4b28d4fda",
       "name": "pyslim",
       "noarch": "python",
-      "sha256": "96e13df2a49fe20962fef05c2420ce1afbacbda9186c5d8ad8ab5887b36d3e88",
-      "size": 19081,
+      "sha256": "e9d27503e75a67f967ea4e8a4873a11d861b3e2b96e8bba33a5c2b021fa98282",
+      "size": 19159,
       "subdir": "noarch",
-      "timestamp": 1564445602223,
-      "version": "0.312"
+      "timestamp": 1572633685037,
+      "version": "0.314"
     }
   },
   "packages.conda": {},
