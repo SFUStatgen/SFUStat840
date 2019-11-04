@@ -145,9 +145,9 @@ To use the `Stat840` Python environment and all the packages
 that you've installed into it, include the following code 
 chunk at the top of your RMarkdown documents.
 
-```
+```{r,eval=FALSE}
 library(reticulate)
-conda <- "~/miniconda3/bin/conda"
+conda <- "~/opt/miniconda3/bin/conda"
 use_condaenv("Stat840",required=TRUE,conda=conda)
 ```
 
