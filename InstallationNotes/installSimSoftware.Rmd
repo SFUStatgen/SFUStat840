@@ -1,7 +1,7 @@
 ---
 title: "Installing Simulation Software"
 author: "Jinko Graham"
-date: "10/07/2019"
+date: "11/04/2019"
 geometry: margin=2.0cm
 output: pdf_document
 ---
@@ -77,11 +77,8 @@ open a *new* terminal
 after the installation to be able to use conda. From a new terminal,
 type `which python` and `which conda` and record the paths to these executables 
 that were installed by miniconda (you will need them in the next step). 
-On my Mac the paths are `/Users/jgraham/miniconda3/bin/python`  and
-`/Users/jgraham/miniconda3/bin/conda`, but I think recent versions 
-of the installer would use `/Users/jgraham/opt/miniconda3/bin/python` 
-and `/Users/jgraham/opt/miniconda3/bin/conda`, with an `opt` between 
-the user name and `miniconda3`.
+On my Mac the paths are `/Users/jgraham/opt/miniconda3/bin/python`  and
+`/Users/jgraham/opt/miniconda3/bin/conda`.
 
 
 ### 2.2. Installing the R package `reticulate`
@@ -92,9 +89,9 @@ After installing, use `library()` to load the package and the function
 in the following R code chunk:
 
 
-```
+```{r,eval=FALSE}
 library(reticulate)
-use_python("~/miniconda3/bin/python") # change if necessary
+use_python("~/opt/miniconda3/bin/python") # change if necessary
 ```
 
 ### 2.3. Installing `msprime` and `tskit` into a Python "environment" from R
@@ -113,9 +110,9 @@ To use the new `Stat840` environment, we call `use_condaenv()`.
 The option `required=TRUE` of `use_condaenv()` ensures that we are using the
 right version of Python.
 
-```
+```{r,eval=FALSE}
 envname <- "Stat840"
-conda <- "~/miniconda3/bin/conda" # change if necessary
+conda <- "~/opt/miniconda3/bin/conda" # change if necessary
 conda_install(envname,"msprime",conda=conda)
 use_condaenv("Stat840",required=TRUE,conda=conda)
 ```
@@ -134,7 +131,7 @@ have a copy of the repository on your computer.
 In what follows, replace `/path/to/SFUStat840` with the path to 
 the copy of the class repository on your computer.
 
-```
+```{r,eval=FALSE}
 pkgname <- "pyslim"
 dir <- "/path/to/SFUStat840/PythonPackages/" 
 source(paste0(dir,"conda_install_local.R"))
