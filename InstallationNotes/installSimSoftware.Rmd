@@ -128,8 +128,8 @@ to simplify its installation from within R. Both the package and R
 function are in the class GitHub repository (https://github.com/SFUStatgen/SFUStat840). 
 Before proceeding, you **must**
 have a copy of the repository on your computer. 
-In what follows, replace `/path/to/SFUStat840` with the path to 
-the copy of the class repository on your computer.
+In what follows, replace `/path/to/SFUStat840` with the **full**
+path to the copy of the class repository on your computer. Note that the tilde shortcut ~ doesn't work in R and so you have to specify the full path.
 
 ```{r,eval=FALSE}
 pkgname <- "pyslim"
